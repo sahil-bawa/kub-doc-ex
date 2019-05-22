@@ -13,21 +13,26 @@ Docker Preferenes and start Kubernetes from the Kubernetes tab. This may take a 
 
 ### When Kubernetes is up and running, check kubernetes cluster info.
 
-``` $ kubectl cluster-info
+``` 
+$ kubectl cluster-info
 $ kubectl version
 ```
 
 ### Running a Webserver:
-``` $ kubectl run —-image=nginx webserver-yourname
+``` 
+$ kubectl run —-image=nginx webserver-yourname
 ```
 ### Port Forward:
-``` $ kubectl get pods
+``` 
+$ kubectl get pods
 $ kubectl portforward POD 5000:80
 ```
 ### Expose:
-``` $ kubectl expose deploy/kubernetes-node --type=NodePort
+``` 
+$ kubectl expose deploy/kubernetes-node --type=NodePort
 $ kubectl get services
 ```
 ### Apply:
-``` $ kubectl apply -f deployment.yaml
+``` 
+$ kubectl apply -f deployment.yaml
 ```
