@@ -29,5 +29,5 @@ $ kubectl portforward POD 5000:80
 $ kubectl get services
 ```
 ### Apply:
-```$ kubectl apply -f deployment.yaml
+``` $ kubectl apply -f deployment.yaml
 ```
