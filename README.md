@@ -8,30 +8,41 @@ Kubernetes is a portable, extensible open-source platform for managing container
 
 ## Install Kubernetes On Docker Mac
 Download and install Docker for Mac from here: https://docs.docker.com/docker-for-mac/install/
-Download and Install kubctl (Kubernetes Command Line Tool) here: https://kubernetes.io/docs/tasks/tools/install-kubectl/
+Download and Install kubectl (Kubernetes Command Line Tool) here: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 Docker Preferenes and start Kubernetes from the Kubernetes tab. This may take a while.
 
 ### When Kubernetes is up and running, check kubernetes cluster info.
 
 ``` 
-$ kubectl cluster-info
 $ kubectl version
+$ kubectl cluster-info
 ```
 
 ### Running a Webserver:
 ``` 
 $ kubectl run —-image=nginx webserver-yourname
 ```
-### Port Forward:
-``` 
-$ kubectl get pods
-$ kubectl portforward POD 5000:80
+### Check your nginx deployment, ReplicaSet, and pods:
 ```
-### Expose:
+$ kubectl get deploy
+$ kubectl get rs
+$ kubectl get pod
+```
+
+### Port Forward from container to your local system:
 ``` 
-$ kubectl expose deploy/kubernetes-node --type=NodePort
+$ kubectl get pod
+$ kubectl portforward <pod-name> 5000:80
+```
+### Expose the node outside of the cluster:
+``` 
+$ kubectl expose deploy webserver-yourname --type=NodePort
 $ kubectl get services
 ```
+^ This expose command will assign a random port to your webserver. Let's call it <rand-port>.
+
+Access the node port at localhost:<rand-port>
+
 ### Apply:
 ``` 
 $ kubectl apply -f deployment.yaml
